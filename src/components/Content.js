@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { fetchNewsItems } from "../services/api";
-import { NewsItem } from "./NewsItem";
 import { useParams } from "react-router-dom";
+import { NewsItem } from "./NewsItem";
+import { fetchNewsItems } from "../services/api";
 
 const seletFields = ({ guid, title, link, contentSnippet, isoDate }) => ({
   guid,
@@ -25,9 +25,9 @@ export const Content = () => {
   }, [slug]);
 
   return (
-    <>
+    <div>
       {newsItems &&
         newsItems.map((item, i) => <NewsItem key={i} item={item} />)}
-    </>
+    </div>
   );
 };

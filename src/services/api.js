@@ -32,7 +32,7 @@ const clean = items => {
 
 export const fetchNewsItems = async feedName => {
   const feed = await fetchFeed(feedName);
-  console.log(feed);
+  // console.log(feed);
   const items = clean(feed.items);
   return items;
 };

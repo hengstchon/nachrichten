@@ -1,5 +1,5 @@
 import React from "react";
 
 export const Header = () => {
-  return <h1>News</h1>;
+  return <h1>Nachrichten</h1>;
 };
