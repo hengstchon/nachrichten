@@ -3,14 +3,14 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import styled from "styled-components";
 
-export const NewsItem = ({ item }) => {
+export const NewsItem = ({ index, item }) => {
   dayjs.extend(relativeTime);
   const { title, link, isoDate, contentSnippet } = item;
   return (
     <NewsItemWrapper>
       <NewsItemTitle>
         <a href={link} target="_blank" rel="noopener noreferrer">
-          {title}
+          {index + 1}. {title}
         </a>
       </NewsItemTitle>
       <NewsItemDate>{dayjs(isoDate).fromNow()}</NewsItemDate>

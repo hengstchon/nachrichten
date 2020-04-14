@@ -27,7 +27,7 @@ export const Content = () => {
   return (
     <div>
       {newsItems &&
-        newsItems.map((item, i) => <NewsItem key={i} item={item} />)}
+        newsItems.map((item, i) => <NewsItem key={i} item={item} index={i} />)}
     </div>
   );
 };
