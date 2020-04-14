@@ -10,15 +10,16 @@ import {
 
 export const NewsItem = ({ item }) => {
   dayjs.extend(relativeTime);
+  const { title, link, isoDate, contentSnippet } = item;
   return (
     <NewsItemWrapper>
       <NewsItemTitle>
-        <a href={item.link} target="_blank">
-          {item.title}
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          {title}
         </a>
       </NewsItemTitle>
-      <NewsItemDate>{dayjs(item.isoDate).fromNow()}</NewsItemDate>
-      <NewsItemContent>{item.content}</NewsItemContent>
+      <NewsItemDate>{dayjs(isoDate).fromNow()}</NewsItemDate>
+      <NewsItemContent>{contentSnippet}</NewsItemContent>
     </NewsItemWrapper>
   );
 };

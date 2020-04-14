@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { getFeeds } from "../services/api";
+import { fetchNewsItems } from "../services/api";
 import { NewsItem } from "./NewsItem";
+import { useParams } from "react-router-dom";
 
-const seletFields = ({ title, link, pubDate, content, isoDate }) => ({
+const seletFields = ({ guid, title, link, contentSnippet, isoDate }) => ({
+  guid,
   title,
   link,
-  pubDate,
-  content,
+  contentSnippet,
   isoDate
 });
 
 export const Content = () => {
-  const [feeds, setFeeds] = useState([]);
+  const p = useParams();
+  const slug = p.slug;
+
+  const [newsItems, setNewsItems] = useState([]);
+
   useEffect(() => {
-    getFeeds().then(data => {
-      const items = data.items;
-      console.log(items[0]);
-      setFeeds(items.map(seletFields));
+    fetchNewsItems(slug).then(items => {
+      items.length = Math.min(30, items.length);
+      setNewsItems(items.map(seletFields));
     });
-  }, []);
+  }, [slug]);
+
   return (
-    <>{feeds && feeds.map(item => <NewsItem key={item.title} item={item} />)}</>
+    <>
+      {newsItems &&
+        newsItems.map((item, i) => <NewsItem key={i} item={item} />)}
+    </>
   );
 };

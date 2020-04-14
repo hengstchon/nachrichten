@@ -1,8 +1,7 @@
 import React from "react";
-import { GlobalStyle, Container } from "../styles/GlobalStyles";
+import { Container, GlobalStyle } from "../styles/GlobalStyles";
 import { Header } from "./Header";
-import { Content } from "./Content";
-import styled from "styled-components";
+import { Nav } from "./Nav";
 
 function App() {
   return (
@@ -10,7 +9,7 @@ function App() {
       <GlobalStyle />
       <Container>
         <Header />
-        <Content />
+        <Nav />
       </Container>
     </>
   );
