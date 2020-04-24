@@ -30,21 +30,21 @@ const NewsItemTitle = styled.h1`
   padding: 10px 0 8px;
   a {
     margin-right: 15px;
-    color: #333;
+    color: #00adb5;
     text-decoration: none;
   }
   a:visited {
-    color: #999;
+    color: #0f4c75;
   }
   a:hover {
-    color: #10579e;
+    color: #3282b8;
     text-decoration: underline;
   }
 `;
 
 const NewsItemDate = styled.span`
   font-size: 12px;
-  color: #999999;
+  color: #eeeeee;
   margin: 0;
   padding: 0;
 `;
@@ -52,6 +52,6 @@ const NewsItemDate = styled.span`
 const NewsItemContent = styled.p`
   line-height: 1.6;
   font-size: 15px;
-  color: #737373;
+  color: #eeeeee;
   padding-bottom: 10px;
 `;
