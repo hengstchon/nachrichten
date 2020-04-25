@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { feeds } from "../services/feedsConfig";
 
@@ -9,7 +9,14 @@ export const Nav = () => {
       <ul>
         {feeds.map(feed => (
           <li key={feed.slug}>
-            <LinkStyled to={`/${feed.slug}`}>{feed.navName}</LinkStyled>
+            <LinkStyled
+              to={`/${feed.slug}`}
+              activeStyle={{
+                "border-bottom": "solid 0.1rem #f78259"
+              }}
+            >
+              {feed.navName}
+            </LinkStyled>
           </li>
         ))}
       </ul>
@@ -35,14 +42,11 @@ const NavStyled = styled.nav`
   }
 `;
 
-const LinkStyled = styled(Link)`
+const LinkStyled = styled(NavLink)`
   font-size: 0.8rem;
   line-height: 1.8rem;
   text-decoration: none;
-  color: #40739e;
-  &:visited {
-    color: #90caf9;
-  }
+  color: #90caf9;
   @media (max-width: 768px) {
     margin-right: 2rem;
   }

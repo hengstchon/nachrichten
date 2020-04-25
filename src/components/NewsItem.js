@@ -20,7 +20,7 @@ export const NewsItem = ({ index, item }) => {
 };
 
 const NewsItemWrapper = styled.section`
-  border-bottom: 1px solid #cccccc;
+  border-bottom: solid 1px #666;
 `;
 
 const NewsItemTitle = styled.h1`
@@ -52,6 +52,6 @@ const NewsItemDate = styled.span`
 const NewsItemContent = styled.p`
   line-height: 1.6;
   font-size: 15px;
-  color: #eeeeee;
+  color: #eee;
   padding-bottom: 10px;
 `;
