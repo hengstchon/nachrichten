@@ -34,10 +34,10 @@ const NewsItemTitle = styled.h1`
     text-decoration: none;
   }
   a:visited {
-    color: #0f4c75;
+    color: #116979;
   }
   a:hover {
-    color: #3282b8;
+    color: #116979;
     text-decoration: underline;
   }
 `;
