@@ -1,5 +1,5 @@
 {
-  "name": "news-demo",
+  "name": "nachrichten",
   "version": "0.1.0",
   "homepage": "http://hengstchon.github.io/nachrichten",
   "private": true,
@@ -20,13 +20,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "yarn build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
