@@ -5,7 +5,7 @@ import Nav from "./Nav";
 
 export default () => {
   return (
-    <Container maxWidth="md">
+    <Container>
       <Nav />
       <Content />
     </Container>
