@@ -39,7 +39,6 @@ export default () => {
 
   const handleDrawerToggle = e => {
     setMobileOpen(!mobileOpen);
-    window.scrollTo(0, 0);
   };
 
   const cat = useLocation().pathname.slice(1);

@@ -49,7 +49,8 @@ export default () => {
       items.length = Math.min(30, items.length);
       setAllNews(items.map(seletFields).map(addId));
     });
-  }, [cat]);
+    window.scrollTo(0, 0);
+  }, [cat, currentPage]);
 
   const classes = useStyles();
 
