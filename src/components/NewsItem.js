@@ -12,9 +12,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ index, item }) => {
+export default ({ item }) => {
   dayjs.extend(relativeTime);
-  const { title, link, isoDate, contentSnippet } = item;
+  const { id, title, link, isoDate, contentSnippet } = item;
 
   const classes = useStyles();
 
@@ -22,7 +22,7 @@ export default ({ index, item }) => {
     <div>
       <Typography variant="h6">
         <Link href={link} target="_blank">
-          {index + 1}. {title}
+          {id}. {title}
         </Link>
       </Typography>
 

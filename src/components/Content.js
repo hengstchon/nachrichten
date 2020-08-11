@@ -15,6 +15,8 @@ const seletFields = ({ guid, title, link, contentSnippet, isoDate }) => ({
   isoDate
 });
 
+const addId = (item, i) => ({ id: i + 1, ...item });
+
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   content: {
@@ -45,7 +47,7 @@ export default () => {
   useEffect(() => {
     fetchNewsItems(cat).then(items => {
       items.length = Math.min(30, items.length);
-      setAllNews(items.map(seletFields));
+      setAllNews(items.map(seletFields).map(addId));
     });
   }, [cat]);
 
@@ -57,9 +59,9 @@ export default () => {
         <div className={classes.toolbar} />
 
         <List>
-          {newsItems.map((item, i) => (
-            <ListItem key={i} divider>
-              <NewsItem item={item} index={i} />
+          {newsItems.map(item => (
+            <ListItem key={item.id} divider>
+              <NewsItem item={item} />
             </ListItem>
           ))}
         </List>
