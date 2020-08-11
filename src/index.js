@@ -1,14 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App";
+import { HashRouter, Switch, Route } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router } from "react-router-dom";
+import App from "./components/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/nachrichten/">
-      <App />
-    </Router>
+    <CssBaseline />
+    <HashRouter basename="/nachrichten">
+      <Switch>
+        <Route path="/">
+          <App />
+        </Route>
+      </Switch>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -10,7 +10,7 @@ const parseUrl = async url => {
 };
 
 const fetchFeed = async feedName => {
-  const feed = feeds.find(f => feedName === f.slug);
+  const feed = feeds.find(f => feedName === f.cat);
   const res = await parseUrl(feed.rssUrl);
   return res;
 };

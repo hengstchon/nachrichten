@@ -1,57 +1,36 @@
 import React from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import styled from "styled-components";
+import { Typography, Link } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-export const NewsItem = ({ index, item }) => {
+const useStyles = makeStyles(theme => ({
+  date: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    color: "#ccc"
+  }
+}));
+
+export default ({ index, item }) => {
   dayjs.extend(relativeTime);
   const { title, link, isoDate, contentSnippet } = item;
+
+  const classes = useStyles();
+
   return (
-    <NewsItemWrapper>
-      <NewsItemTitle>
-        <a href={link} target="_blank" rel="noopener noreferrer">
+    <div>
+      <Typography variant="h6">
+        <Link href={link} target="_blank">
           {index + 1}. {title}
-        </a>
-      </NewsItemTitle>
-      <NewsItemDate>{dayjs(isoDate).fromNow()}</NewsItemDate>
-      <NewsItemContent>{contentSnippet}</NewsItemContent>
-    </NewsItemWrapper>
+        </Link>
+      </Typography>
+
+      <Typography variant="body2" className={classes.date}>
+        {dayjs(isoDate).fromNow()}
+      </Typography>
+
+      <Typography variant="body1">{contentSnippet}</Typography>
+    </div>
   );
 };
-
-const NewsItemWrapper = styled.section`
-  border-bottom: solid 1px #666;
-`;
-
-const NewsItemTitle = styled.h1`
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 5px;
-  padding: 10px 0 8px;
-  a {
-    margin-right: 15px;
-    color: #00adb5;
-    text-decoration: none;
-  }
-  a:visited {
-    color: #116979;
-  }
-  a:hover {
-    color: #116979;
-    text-decoration: underline;
-  }
-`;
-
-const NewsItemDate = styled.span`
-  font-size: 12px;
-  color: #eeeeee;
-  margin: 0;
-  padding: 0;
-`;
-
-const NewsItemContent = styled.p`
-  line-height: 1.6;
-  font-size: 15px;
-  color: #eee;
-  padding-bottom: 10px;
-`;
