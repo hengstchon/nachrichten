@@ -7,7 +7,7 @@ import App from "./components/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter basename="/nachrichten">
+    <HashRouter>
       <Switch>
         <Route path="/">
           <App />
