@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   date: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
-    color: "#ccc"
+    color: theme.palette.grey[500]
   }
 }));
 
@@ -21,7 +21,7 @@ export default ({ item }) => {
   return (
     <div>
       <Typography variant="h6">
-        <Link href={link} target="_blank">
+        <Link href={link} target="_blank" color="primary">
           {id}. {title}
         </Link>
       </Typography>

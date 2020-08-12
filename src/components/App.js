@@ -1,13 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "@material-ui/core";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import teal from "@material-ui/core/colors/teal";
+
 import Content from "./Content";
 import Nav from "./Nav";
 
 export default () => {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [darkMode, setDarkMode] = useState(prefersDarkMode);
+
+  const lightTheme = createMuiTheme({
+    palette: {
+      type: "light",
+      primary: {
+        main: teal[700]
+      }
+    }
+  });
+
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: "dark",
+      primary: {
+        main: teal[300]
+      }
+    }
+  });
+
+  const handleClickDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <Container>
-      <Nav />
-      <Content />
-    </Container>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <Container>
+        <Nav darkMode={darkMode} handleClickDarkMode={handleClickDarkMode} />
+        <Content />
+      </Container>
+    </ThemeProvider>
   );
 };

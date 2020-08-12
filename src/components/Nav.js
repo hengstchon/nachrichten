@@ -4,6 +4,8 @@ import { drawerWidth } from "../config";
 
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import Brightness2Icon from "@material-ui/icons/Brightness2";
 import {
   AppBar,
   Drawer,
@@ -24,6 +26,9 @@ const useStyles = makeStyles(theme => ({
       width: `calc(100% - ${drawerWidth}px)`
     }
   },
+  toolBar: {
+    justifyContent: "space-between"
+  },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
@@ -32,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default () => {
+export default ({ darkMode, handleClickDarkMode }) => {
   const classes = useStyles();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -47,7 +52,7 @@ export default () => {
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
-      <Toolbar>
+      <Toolbar className={classes.toolBar} color="secondary">
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -60,6 +65,9 @@ export default () => {
         <Typography variant="h6" noWrap>
           {title}
         </Typography>
+        <IconButton color="inherit" edge="end" onClick={handleClickDarkMode}>
+          {darkMode ? <WbSunnyIcon /> : <Brightness2Icon />}
+        </IconButton>
       </Toolbar>
 
       <nav>

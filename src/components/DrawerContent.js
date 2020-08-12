@@ -34,7 +34,7 @@ export default ({ handleDrawerToggle }) => {
             onClick={handleDrawerToggle}
           >
             <ListItemIcon>
-              <LinkIcon />
+              <LinkIcon color="primary" />
             </ListItemIcon>
             <ListItemText primary={navName} />
           </ListItem>
