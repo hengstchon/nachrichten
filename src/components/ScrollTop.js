@@ -19,6 +19,7 @@ export default () => {
     <Zoom in={trigger}>
       <Fab
         size="small"
+        color="primary"
         onClick={() => window.scrollTo(0, 0)}
         className={classes.root}
       >
