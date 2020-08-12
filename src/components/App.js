@@ -7,6 +7,7 @@ import teal from "@material-ui/core/colors/teal";
 
 import Content from "./Content";
 import Nav from "./Nav";
+import ScrollTop from "./ScrollTop";
 
 export default () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -45,6 +46,7 @@ export default () => {
         <Nav darkMode={darkMode} handleClickDarkMode={handleClickDarkMode} />
         <Content />
       </Container>
+      <ScrollTop />
     </ThemeProvider>
   );
 };

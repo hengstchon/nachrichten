@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { List, ListItem, Paper } from "@material-ui/core";
-import { fetchNewsItems } from "../services/api";
+import { makeStyles } from "@material-ui/core/styles";
+
 import NewsItem from "./NewsItem";
 import Pagination from "./Pagination";
-import { makeStyles } from "@material-ui/core/styles";
 import { drawerWidth } from "../config";
+import { fetchNewsItems } from "../services/api";
 
 const seletFields = ({ guid, title, link, contentSnippet, isoDate }) => ({
   guid,

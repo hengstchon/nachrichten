@@ -1,21 +1,23 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { drawerWidth } from "../config";
-
 import { makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import WbSunnyIcon from "@material-ui/icons/WbSunny";
-import Brightness2Icon from "@material-ui/icons/Brightness2";
 import {
   AppBar,
   Drawer,
   Hidden,
   IconButton,
   Toolbar,
-  Typography
+  Typography,
+  Slide,
+  useScrollTrigger
 } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import Brightness2Icon from "@material-ui/icons/Brightness2";
+
 import DrawerContent from "./DrawerContent";
 import { feeds } from "../services/feedsConfig";
+import { drawerWidth } from "../config";
 
 const useStyles = makeStyles(theme => ({
   drawerPaper: {
@@ -39,10 +41,11 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ darkMode, handleClickDarkMode }) => {
   const classes = useStyles();
+  const trigger = useScrollTrigger();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerToggle = e => {
+  const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
@@ -51,54 +54,56 @@ export default ({ darkMode, handleClickDarkMode }) => {
   const title = feed ? feed.navName : "Nachrichten";
 
   return (
-    <AppBar position="fixed" className={classes.appBar}>
-      <Toolbar className={classes.toolBar} color="secondary">
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          className={classes.menuButton}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" noWrap>
-          {title}
-        </Typography>
-        <IconButton color="inherit" edge="end" onClick={handleClickDarkMode}>
-          {darkMode ? <WbSunnyIcon /> : <Brightness2Icon />}
-        </IconButton>
-      </Toolbar>
-
-      <nav>
-        {/* Mobile: show drawer when = xs */}
-        <Hidden smUp>
-          <Drawer
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            ModalProps={{
-              keepMounted: true // Better open performance on mobile.
-            }}
+    <Slide in={!trigger}>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar className={classes.toolBar} color="secondary">
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
           >
-            <DrawerContent handleDrawerToggle={handleDrawerToggle} />
-          </Drawer>
-        </Hidden>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            {title}
+          </Typography>
+          <IconButton edge="end" onClick={handleClickDarkMode}>
+            {darkMode ? <WbSunnyIcon /> : <Brightness2Icon />}
+          </IconButton>
+        </Toolbar>
 
-        {/* Desktop: show drawer when > xs */}
-        <Hidden xsDown>
-          <Drawer
-            variant="permanent"
-            classes={{
-              paper: classes.drawerPaper
-            }}
-          >
-            <DrawerContent handleDrawerToggle={handleDrawerToggle} />
-          </Drawer>
-        </Hidden>
-      </nav>
-    </AppBar>
+        <nav>
+          {/* Mobile: show drawer when = xs */}
+          <Hidden smUp>
+            <Drawer
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper
+              }}
+              ModalProps={{
+                keepMounted: true // Better open performance on mobile.
+              }}
+            >
+              <DrawerContent handleDrawerToggle={handleDrawerToggle} />
+            </Drawer>
+          </Hidden>
+
+          {/* Desktop: show drawer when > xs */}
+          <Hidden xsDown>
+            <Drawer
+              variant="permanent"
+              classes={{
+                paper: classes.drawerPaper
+              }}
+            >
+              <DrawerContent handleDrawerToggle={handleDrawerToggle} />
+            </Drawer>
+          </Hidden>
+        </nav>
+      </AppBar>
+    </Slide>
   );
 };
