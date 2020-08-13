@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { List, ListItem, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from "react-ga";
 
 import NewsItem from "./NewsItem";
 import Pagination from "./Pagination";
@@ -54,6 +55,11 @@ export default () => {
   }, [cat, currentPage]);
 
   const classes = useStyles();
+
+  // google analytics
+  useEffect(() => {
+    ReactGA.pageview(window.location.href);
+  }, [cat, currentPage]);
 
   return (
     newsItems && (
