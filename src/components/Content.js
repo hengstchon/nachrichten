@@ -59,6 +59,7 @@ export default () => {
   // google analytics
   useEffect(() => {
     ReactGA.pageview(window.location.href);
+    console.log(window.location.href)
   }, [cat, currentPage]);
 
   return (
