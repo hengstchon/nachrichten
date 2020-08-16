@@ -4,6 +4,7 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import teal from "@material-ui/core/colors/teal";
+import orange from "@material-ui/core/colors/orange";
 
 import Content from "./Content";
 import Nav from "./Nav";
@@ -22,6 +23,9 @@ export default () => {
       type: "light",
       primary: {
         main: teal[700]
+      },
+      secondary: {
+        main: orange[700]
       }
     }
   });
@@ -31,6 +35,9 @@ export default () => {
       type: "dark",
       primary: {
         main: teal[300]
+      },
+      secondary: {
+        main: orange[300]
       }
     }
   });
