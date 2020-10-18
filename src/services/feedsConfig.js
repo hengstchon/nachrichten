@@ -78,5 +78,10 @@ export const feeds = [
     cat: "br24",
     navName: "BR24",
     rssUrl: "https://nachrichtenfeeds.br.de/rdf/boards/QXAPkQJ"
+  },
+  {
+    cat: "tarnkappe",
+    navName: "Tarnkappe.info",
+    rssUrl: "https://tarnkappe.info/feed/"
   }
 ];
