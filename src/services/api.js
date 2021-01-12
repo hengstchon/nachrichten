@@ -1,7 +1,7 @@
 import Parser from "rss-parser";
 import { feeds } from "../services/feedsConfig";
 
-const CORS_PROXY = "https://cors.zme.ink/";
+const CORS_PROXY = "https://cors.netnr.workers.dev/";
 
 const parseUrl = async url => {
   let parser = new Parser();
